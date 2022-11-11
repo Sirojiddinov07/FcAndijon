@@ -1,0 +1,54 @@
+{%extends 'base.html'%}
+{%block content%}
+<div class="main-content">
+    <section class="section">
+      <div class="section-body">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h4>Advanced Table</h4>
+                <div class="card-header-form">
+                  <form>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Search">
+                      <div class="input-group-btn">
+                        <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="card-body p-0">
+                <div class="table-responsive">
+                  <table class="table table-striped">
+                    <tr>
+                      <th class="text-center">
+                      </th>
+                      <th>Name</th>
+                      <th>Photo</th>
+                      <th>Price</th>
+                      <th>Description</th>
+                    </tr>
+                    {% for i in product %}
+                    <tr>
+                      <td>{{ i.name }}</td>
+                      {% if i.photo.url is not None %}
+                        <td><img src="{{ i.photo.url }}" class="rounded-circle" width="60" height="60" alt=""></td>
+                      {% else %}
+                        <td>None img</td>
+                      {% endif %}
+                       <td>{{ i.price }}</td>
+                      <td>{{ i.description }}</td>
+                    </tr>
+                    {% endfor %}
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</div>
+{%endblock%}
