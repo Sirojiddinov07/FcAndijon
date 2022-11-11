@@ -81,7 +81,8 @@ class ProductView(ListAPIView):
     permission_classes = [AllowAny]
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
     filterset_fields = ['description', 'name', 'price']
-
+    search_fields = ['question_text']
+    filter_backends = (filters.SearchFilter,)
 
 class AboutView(ListAPIView):
     serializer_class = AboutSerializer
