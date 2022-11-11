@@ -25,6 +25,9 @@ class Player(models.Model):
     status = models.SmallIntegerField(default=6, choices=TYPE)
     captain = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.name
+
 
 class Club(models.Model):
     players = models.ManyToManyField(Player)
