@@ -55,3 +55,9 @@ class ProductSerializer(ModelSerializer):
         fields = "__all__"
 
 
+class AboutSerializer(ModelSerializer):
+    class Meta:
+        model = About
+        fields = "__all__"
+
+

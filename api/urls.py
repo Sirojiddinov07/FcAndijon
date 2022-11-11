@@ -12,4 +12,5 @@ urlpatterns = [
     path('wishlist/', WishlistView.as_view()),
     path('card/', CardView.as_view()),
     path('product/', ProductView.as_view()),
+    path('about/', AboutView.as_view()),
 ]

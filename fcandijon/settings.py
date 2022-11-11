@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'adminka',
     'api',
+    'rest_framework',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

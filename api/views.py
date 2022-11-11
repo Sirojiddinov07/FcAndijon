@@ -7,6 +7,7 @@ import django_filters.rest_framework
 from rest_framework import filters
 from rest_framework.pagination import PageNumberPagination
 
+
 # Create your views here.
 class StandardResultsSetPagination(PageNumberPagination):
     page_size = 10
@@ -14,25 +15,25 @@ class StandardResultsSetPagination(PageNumberPagination):
     max_page_size = 1000
 
 
-
 class PlayersView(ListAPIView):
     serializer_class = PlayerSerializer
-    queryset = Player()
+    queryset = Player.objects.all()
     permission_classes = [AllowAny]
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
     filterset_fields = '__all__'
+
 
 class ClubView(ListAPIView):
     serializer_class = ClubSerializer
-    queryset = Club()
+    queryset = Club.objects.all()
     permission_classes = [AllowAny]
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
-    filterset_fields = '__all__'
+    filterset_fields = ['name', 'players']
 
 
 class TurnirView(ListAPIView):
     serializer_class = TurnirSerializer
-    queryset = Turnir()
+    queryset = Turnir.objects.all()
     permission_classes = [AllowAny]
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
     filterset_fields = '__all__'
@@ -40,7 +41,7 @@ class TurnirView(ListAPIView):
 
 class MatchView(ListAPIView):
     serializer_class = MatchSerializer
-    queryset = Match()
+    queryset = Match.objects.all()
     permission_classes = [AllowAny]
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
     filterset_fields = '__all__'
@@ -48,7 +49,7 @@ class MatchView(ListAPIView):
 
 class SponsorView(ListAPIView):
     serializer_class = SponsorSerializer
-    queryset = Sponsor()
+    queryset = Sponsor.objects.all()
     permission_classes = [AllowAny]
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
     filterset_fields = '__all__'
@@ -56,32 +57,36 @@ class SponsorView(ListAPIView):
 
 class TrendingView(ListAPIView):
     serializer_class = TrendingSerializer
-    queryset = Trending()
+    queryset = Trending.objects.all()
     permission_classes = [AllowAny]
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
-    filterset_fields = '__all__'
+    filterset_fields = ['description', 'name', 'date']
 
 
 class WishlistView(ListAPIView):
     serializer_class = WishlistSerializer
-    queryset = Wishlist()
+    queryset = Wishlist.objects.all()
     permission_classes = [AllowAny]
 
 
 class CardView(ListAPIView):
     serializer_class = CardSerializer
-    queryset = Card()
+    queryset = Card.objects.all()
     permission_classes = [IsAuthenticated]
-
 
 
 class ProductView(ListAPIView):
     serializer_class = ProductSerializer
-    queryset = Product()
+    queryset = Product.objects.all()
     permission_classes = [AllowAny]
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
-    filterset_fields = '__all__'
-    pagination_class = StandardResultsSetPagination
+    filterset_fields = ['description', 'name', 'price']
+
+
+class AboutView(ListAPIView):
+    serializer_class = AboutSerializer
+    queryset = About.objects.all()
+    permission_classes = [AllowAny]
 
 
 
