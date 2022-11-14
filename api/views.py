@@ -7,7 +7,6 @@ import django_filters.rest_framework
 from rest_framework import filters
 from rest_framework.pagination import PageNumberPagination
 
-
 # Create your views here.
 class StandardResultsSetPagination(PageNumberPagination):
     page_size = 10
@@ -81,8 +80,8 @@ class ProductView(ListAPIView):
     permission_classes = [AllowAny]
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
     filterset_fields = ['description', 'name', 'price']
-    search_fields = ['question_text']
-    filter_backends = (filters.SearchFilter,)
+    # filter_backends = [filters.SearchFilter]
+    # search_fields = ['^name', 'price', 'description']
 
 class AboutView(ListAPIView):
     serializer_class = AboutSerializer
